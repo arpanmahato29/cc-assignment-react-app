@@ -54,12 +54,12 @@ const Navbar = () => {
                                 <li><Link class="dropdown-item" to="/products/add">Add Product</Link></li>
                             </ul>
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <Link className="nav-link" to="/dashboard">Dashboard</Link>
-                        </li>
+                        </li> */}
                     </ul>
-                    {loginAndSignupModule()}
-                    {signoutModule()}
+                    {/* {loginAndSignupModule()} */}
+                    {/* {signoutModule()} */}
                 </div>
             </div>
         </nav>
