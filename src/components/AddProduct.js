@@ -7,7 +7,6 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const AddProduct = () => {
-  const user = isAutheticated();
 
   const [product, setProduct] = useState({
     name: "",
@@ -46,7 +45,7 @@ const AddProduct = () => {
 
   const onSubmit = event => {
     event.preventDefault();
-    createProduct(user, product).then(data => {
+    createProduct(product).then(data => {
       if (data) {
         setSuccess(true);
         setFailed(false);
@@ -65,16 +64,6 @@ const AddProduct = () => {
   const handleSelect = event => {
     const selectedCategory = categories.filter(cate => cate.id == event.target.value)
     setProduct({ ...product, category: selectedCategory[0] })
-  }
-
-  const isNotLoggedIn = () => {
-    if(!user) {
-      return(
-        <div className="alert alert-danger col-md-8 offset-md-2 mt-5">
-          <p>Please Login to Add Product</p>
-        </div>
-      )
-    }
   }
 
   const onSuccess = () => {
@@ -172,9 +161,7 @@ const AddProduct = () => {
 
   return (
     <div>
-      <Navbar />
-      { !user ? 
-        isNotLoggedIn() : 
+      <Navbar /> 
         <div class="card col-md-8 offset-md-2 mt-5">
         <div class="card-body">
           <div className="row rounded">
@@ -186,8 +173,6 @@ const AddProduct = () => {
           </div>
         </div>
       </div>
-      }
-      
     </div>
   );
 };
