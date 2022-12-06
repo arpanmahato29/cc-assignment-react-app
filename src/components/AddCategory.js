@@ -9,7 +9,6 @@ const AddCategory = () => {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const user = isAutheticated();
 
   const goBack = () => (
     <div className="mt-5">
@@ -30,7 +29,7 @@ const AddCategory = () => {
     setSuccess(false);
 
     //backend request fired
-    createCategory(user, { name }).then(data => {
+    createCategory({ name }).then(data => {
       if (data) {
         setError("");
         setSuccess(true);
@@ -41,15 +40,6 @@ const AddCategory = () => {
     });
   };
 
-  const isNotLoggedIn = () => {
-    if(!user) {
-      return(
-        <div className="alert alert-danger col-md-8 offset-md-2 mt-5">
-          <p>Please Login to Add Category</p>
-        </div>
-      )
-    }
-  }
 
   const successMessage = () => {
     if (success) {
@@ -94,8 +84,7 @@ const AddCategory = () => {
   return (
     <div>
       <Navbar />
-      { !user ? 
-        isNotLoggedIn() : 
+
         <div className="card col-md-8 offset-md-2 mt-5">
         <div className="card-body">
           <div className="row bg-white rounded">
@@ -107,9 +96,7 @@ const AddCategory = () => {
             </div>
           </div>
         </div>
-      </div>}
-      
-      
+      </div>
     </div>
   );
 };
