@@ -17,19 +17,14 @@ export const getProducts = () => {
     .catch(err => console.log(err));
 };
 
-export const createCategory = (user, category) => {
-  const payload = {
-    "user": user,
-    "category": category
-  }
-  console.log(payload);
+export const createCategory = (category) => {
   return fetch(`${API}/categories`, {
     method: "POST",
     mode: "cors",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(payload)
+    body: JSON.stringify(category)
   })
     .then(response => {
       if(response.status == 201) {
@@ -54,18 +49,14 @@ export const getCategories = () => {
 };
 
 
-export const createProduct = (user, product) => {
-  const payload = {
-    user,
-    product
-  }
+export const createProduct = (product) => {
   return fetch(`${API}/products`, {
     method: "POST",
     mode: "cors",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(payload)
+    body: JSON.stringify(product)
   })
     .then(response => {
       if(response.status == 201){
